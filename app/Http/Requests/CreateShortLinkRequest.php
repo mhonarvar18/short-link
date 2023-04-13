@@ -13,7 +13,7 @@ class CreateShortLinkRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,21 @@ class CreateShortLinkRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'url' => 'required|url',
+            'name' => 'required|string',
+            'expired_date' => 'required|string',
+        ];
+    }
+
+    public function messages() {
+
+        return [
+            'url.required'=> 'The :attribute is required',
+            'url.url'=> 'The :attribute is not url',
+            'name.required'=> 'The :attribute is required',
+            'expired_date.required'=> 'The :attribute is required',
+            'name.string'=> 'The :attribute is not valid name',
+            'expired_date.string'=> 'The :attribute is not valid expired_date'
         ];
     }
 }

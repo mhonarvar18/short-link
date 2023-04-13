@@ -15,7 +15,10 @@ class ShortLinkResource extends JsonResource
     public function toArray($request)
     {
         return [
-            
+            'name' => $this->name ?? '',
+            'slug' => $this->slug ?? '',
+            'url' => $this->target_url ?? '',
+            'expired_date' => $this->expired_at ?? '',
         ];
     }
 }

@@ -15,6 +15,11 @@ class CreateShortLinksTable extends Migration
     {
         Schema::create('short_links', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('slug')->index()->nullable();
+            $table->string('target_url');
+            $table->timestamp('expired_at');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

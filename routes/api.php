@@ -17,3 +17,6 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::post('/short-link', [\App\Http\Controllers\ShortlinkController::class, 'createShortLink']);
+Route::get('/short-link', [\App\Http\Controllers\ShortlinkController::class, 'getAllShortLinks']);
